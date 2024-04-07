@@ -111,7 +111,7 @@ $db = $database->getConnection();
 $contact = new Contact($db);
 
 // // Contoh penggunaan fungsi Create
-// $contact->no_hp = "085762536271";
+// $contact->no_hp = "822716212";
 // $contact->owner = "Jessyca Adelia";
 // if($contact->create()){
 //     echo "Kontak berhasil ditambahkan.";
@@ -134,7 +134,7 @@ if($num>0){
 
 // Contoh penggunaan fungsi Update
 $contact->id = 1;
-$contact->no_hp = "085762536271";
+$contact->no_hp = "822716212";
 $contact->owner = "Jessyca Adelia";
 if($contact->update()){
     echo "Kontak berhasil diperbarui.";
