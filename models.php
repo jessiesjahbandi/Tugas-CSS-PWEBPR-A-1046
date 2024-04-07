@@ -30,7 +30,7 @@ class Contact {
 
     // Properti dari objek kontak
     public $id;
-    public $nomor_hp;
+    public $no_hp;
     public $owner;
 
     // Constructor untuk kelas Contact
@@ -40,11 +40,11 @@ class Contact {
 
     // Fungsi Create (Tambah data kontak)
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " SET nomor_hp=:nomor_hp, owner=:owner";
+        $query = "INSERT INTO " . $this->table_name . " SET no_hp=:no_hp, owner=:owner";
         $stmt = $this->conn->prepare($query);
 
         // Bind parameter
-        $stmt->bindParam(":nomor_hp", $this->nomor_hp);
+        $stmt->bindParam(":no_hp", $this->no_hp);
         $stmt->bindParam(":owner", $this->owner);
 
         // Eksekusi query
@@ -57,7 +57,7 @@ class Contact {
 
     // Fungsi Read (Ambil semua data kontak)
     function read(){
-        $query = "SELECT id, nomor_hp, owner FROM " . $this->table_name;
+        $query = "SELECT id, no_hp, owner FROM " . $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 
@@ -66,12 +66,12 @@ class Contact {
 
     // Fungsi Update (Update data kontak)
     function update(){
-        $query = "UPDATE " . $this->table_name . " SET nomor_hp=:nomor_hp, owner=:owner WHERE id=:id";
+        $query = "UPDATE " . $this->table_name . " SET no_hp=:no_hp, owner=:owner WHERE id=:id";
         $stmt = $this->conn->prepare($query);
 
         // Bind parameter
         $stmt->bindParam(":id", $this->id);
-        $stmt->bindParam(":nomor_hp", $this->nomor_hp);
+        $stmt->bindParam(":no_hp", $this->no_hp);
         $stmt->bindParam(":owner", $this->owner);
 
         // Eksekusi query
@@ -111,7 +111,7 @@ $db = $database->getConnection();
 $contact = new Contact($db);
 
 // // Contoh penggunaan fungsi Create
-// $contact->nomor_hp = "085762536271";
+// $contact->no_hp = "085762536271";
 // $contact->owner = "Jessyca Adelia";
 // if($contact->create()){
 //     echo "Kontak berhasil ditambahkan.";
@@ -126,7 +126,7 @@ $num = $stmt->rowCount();
 if($num>0){
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         extract($row);
-        echo "ID: {$id}, Nomor HP: {$nomor_hp}, Owner: {$owner}<br>";
+        echo "ID: {$id}, Nomor HP: {$no_hp}, Owner: {$owner}<br>";
     }
 } else {
     echo "Tidak ada kontak yang ditemukan.";
@@ -134,7 +134,7 @@ if($num>0){
 
 // Contoh penggunaan fungsi Update
 $contact->id = 1;
-$contact->nomor_hp = "085762536271";
+$contact->no_hp = "085762536271";
 $contact->owner = "Jessyca Adelia";
 if($contact->update()){
     echo "Kontak berhasil diperbarui.";
