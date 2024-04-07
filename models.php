@@ -3,7 +3,7 @@
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "contact_app";
+    private $database = "kelas_a_1046";
     public $conn;
 
     // Koneksi ke database
